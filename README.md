@@ -1,34 +1,16 @@
-setup
-git 
-git submodule add https://github.com/collectiveaccess/providence.git htdocs
-cp 
+## Description
+A vagrant setup for [Providence](https://github.com/collectiveaccess/providence).
 
+## Running
+```
+git submodule update --recursive --remote
+vagrant plugin install vagrant-hostsupdater
+vagrant up
+```
+Go to http://localhost.archives.chinmayamission.com on your computer.
 
-install vagrant, ant
-
-vagrant ssh
-mysql
-use db_devgcmw;
-source /var/www/startup/db/db_devgcmw_v2.sql;
-
-Replace utf8mb4_unicode_520_ci with utf8mb4_unicode_ci
-
-sudo tail -f /var/log/apache2/error.log
-
-HOSTS
-192.168.33.11	localhost.archives.chinmayamission.com
-
-CREATE USER 'devuser'@'localhost';
-GRANT ALL PRIVILEGES ON db_devgcmw.* To 'devuser'@'localhost' IDENTIFIED BY 'password';
-
-
-update wp_users set user_pass=md5('password') where user_login='admin';
-
-
-Reg scripts: https://developers.elementor.com/add-custom-functionality
-
-## System Requirement 
-	-8gb ram minimum , becuase we used virtualization on box
+## System Requirements
+	-8gb ram minimum, becuase we used virtualization on box
 	-Latest system configuration which can have virtualization technology
 	-32bit/64bit
 
@@ -113,16 +95,12 @@ Reg scripts: https://developers.elementor.com/add-custom-functionality
 	3) RUN Project visit to project directory and run in terminal
 		#  ant
 
-## Basic commands require to upgrade PHP 5.6 to 7.1
+##
+Notes
+```
+# apache2ctl -S
+# sudo vim /etc/apache2/sites-available/local.archives.chinmayamission.com.conf
 
-1) yes | sudo add-apt-repository ppa:ondrej/php 
-2) sudo apt-get update
-3) yes | sudo apt-get install php7.1
-4) yes | sudo apt install php7.1-mysql php7.1-curl php7.1-json php7.1-cgi  php7.0 libapache2-mod-php7.1 php7.1-xml
-5) sudo apt-get install mysql-server php7.1-mysql
-6) sudo a2dismod php5
-7) sudo a2enmod php7.1 
-8) sudo pip install awscli
-9) sudo service apache2 reload	
-
-These Commands need to be added to install_dependencies.sh file for deplyment process and in bootstrap.sh file local box.
+# sudo sed -i s,'/var/www/public','/var/www/htdocs',g /etc/apache2/sites-available/000-default.conf
+# sudo a2ensite 000-default
+```

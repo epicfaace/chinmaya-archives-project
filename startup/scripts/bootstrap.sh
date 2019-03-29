@@ -12,32 +12,30 @@ DOMAIN=local.archives.chinmayamission.com
             sudo apt-get install mysql-server php7.1-mysql
             sudo a2dismod php5
             sudo a2enmod php7.0 
-            sudo apt-get install php7.1-xml
+            sudo apt-get install php7.0-xml
+            sudo apt-get install php7.0-zip
 
             # echo "Creating vhost config for $DOMAIN..."
-            # sudo cp /etc/apache2/sites-available/scotchbox.local.conf /etc/apache2/sites-available/$DOMAIN.conf
+            sudo cp /etc/apache2/sites-available/scotchbox.local.conf /etc/apache2/sites-available/$DOMAIN.conf
 
             # echo "Updating vhost config for $DOMAIN..."
-            # sudo sed -i s,'www.scotchbox.local','*.'$DOMAIN,g /etc/apache2/sites-available/$DOMAIN.conf
-            # sudo sed -i s,'scotchbox.local',$DOMAIN,g /etc/apache2/sites-available/$DOMAIN.conf
-            # sudo sed -i s,/var/www/public,/var/www/htdocs,g /etc/apache2/sites-available/$DOMAIN.conf
+            sudo sed -i s,'www.scotchbox.local','*.'$DOMAIN,g /etc/apache2/sites-available/$DOMAIN.conf
+            sudo sed -i s,'scotchbox.local',$DOMAIN,g /etc/apache2/sites-available/$DOMAIN.conf
+            sudo sed -i s,/var/www/public,/var/www/htdocs,g /etc/apache2/sites-available/$DOMAIN.conf
 
             # echo "Enabling $DOMAIN. Will probably tell you to restart Apache..."
-            # sudo a2ensite $DOMAIN.conf
+            sudo a2ensite $DOMAIN.conf
             # sudo a2dissite 000-default scotchbox-local
-
-            sudo sed -i s,'/var/www/public','/var/www/htdocs',g /etc/apache2/sites-available/000-default.conf
-            sudo a2ensite 000-default
 
             echo "So let's restart apache..."
             sudo service apache2 restart
      		
-## End Configure Aapche
+## End Configure Apache
 
 cd /var/www
 
 ## Copy setup information
-cp setup.php.txt htdocs/setup.php
+cp setup.php htdocs/setup.php
 
 ## Create Database and Import SQL File
 #echo Create Database and Import SQL FIle
