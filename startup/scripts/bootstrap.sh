@@ -25,7 +25,7 @@ DOMAIN=localhost.archives.chinmayamission.com
 
             # echo "Enabling $DOMAIN. Will probably tell you to restart Apache..."
             sudo a2ensite $DOMAIN.conf
-            sudo a2dissite 000-default scotchbox-local
+            sudo a2dissite 000-default scotchbox.local
 
             echo "So let's restart apache..."
             sudo service apache2 restart
