@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="GCMWV2" default="wordpress-setup" basedir="." >
+
+	<property name="dist" value="dist" />
+	<property name="htdocs" value="htdocs" />
+	<property name="th-path" value="htdocs/wp-content/themes" />
+
+	<macrodef name = "git">
+    	<attribute name = "command" />
+    	<attribute name = "dir" default = "" />
+    	<element name = "args" optional = "true" />
+    	<sequential>
+        	<echo message = "git @{command}" />
+        	<exec executable = "git" dir = "@{dir}">
+            	<arg value = "@{command}" />
+            	<args/>
+        	</exec>
+    	</sequential>
+	</macrodef>
+	<macrodef name = "git-clone-pull">
+    	<attribute name = "repository" />
+    	<attribute name = "dest" />
+    	<sequential>
+        	<git command = "clone">
+            	<args>
+                	<arg value = "@{repository}" />
+                	<arg value = "@{dest}" />
+            	</args>
+        	</git>
+        	<git command = "pull" dir = "@{dest}" />
+    	</sequential>
+    </macrodef>
+
+<!-- Setup Wordpress Vagrant Setup -->
+	<target name="wordpress-setup" description="Installing and settingup wordpress scotch box">
+		<exec executable="vagrant" failonerror="true">
+			<arg value="up" />
+	   	</exec>
+	</target>
+
+
+<!-- ############################################################################################# -->
+<!-- Build Production -->
+<target name="compose" description="Installing composer dependencies">
+	<exec executable="composer" failonerror="true">
+		<arg value="install" />
+   	</exec>
+   	<exec executable="composer" failonerror="true">
+		<arg value="update" />
+   	</exec>
+</target>
+<!-- <target name="make-css" description="Building css files">
+	<exec executable="gulp" dir="${th-path}/GCMW" vmlauncher="false" />  	
+	<exec executable="gulp" dir="${th-path}/bhavnagar_subsite" vmlauncher="false" />
+	<exec executable="gulp" dir="${th-path}/pushpanjali_subsite" vmlauncher="false" />
+	<exec executable="gulp" dir="${th-path}/delhi_subsite" vmlauncher="false" />
+	<exec executable="gulp" dir="${th-path}/ahmedabad_subsite" vmlauncher="false" />
+	<exec executable="gulp" dir="${th-path}/vibhooti_subsite" vmlauncher="false" />
+</target> -->
+
+<!-- Run to build code -->
+<target name="build-tar" depends="clean, compose, mkdir">
+	<tar destfile="${dist}/gcmwv2.tar" 
+		 basedir="${dist}/${htdocs}" 
+		 excludes="**/.git/**, **/.gitignore/**, **/Vagrantfile/**">
+	</tar>
+</target>
+
+<target name="mkdir" description="create directory dist">
+	<mkdir dir="${dist}" />
+	<copydir src="${htdocs}" dest="${dist}/${htdocs}" />
+</target>
+
+<target name="clean">
+	<delete dir="${dist}"/>
+</target>
+
+
+<!-- Target to Manage Dependend projects -->
+<target name="stage-code" >
+	<mkdir dir="${th-path}" />
+	<!--git-clone-pull repository="ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/gcmw-plugins" dest="htdocs/wp-content/plugins" /-->
+ 
+</target>
+</project>

@@ -1,0 +1,29 @@
+{
+  "name": "wp-gcmw",
+  "version": "1.0.0",
+  "description": "Global CM Website",
+  "main": "index.js",
+  "dependencies": {
+    "gulp-clean-css": "^3.9.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^4.0.0",
+    "gulp-sourcemaps": "^2.6.4"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-git": "^2.5.2",
+    "gulp-replace": "^0.6.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/gcmw-wp"
+  },
+  "keywords": [
+    "GCMW"
+  ],
+  "author": "Pallavi P & Suresh Bathala",
+  "license": "ISC"
+}

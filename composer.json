@@ -1,0 +1,30 @@
+{
+	"name": "Wordpress Demo",
+	"description": "Demo Wordpress Code",
+	"keywords": [
+		"gcmw",
+		"wordpress",
+		"chinmaya"
+	],
+	"authors": [
+		{
+			"name": "CCMT Dev Team",
+			"email": "itsupport.ccmt@chinmayamission.com",
+			"homepage": "http://www.chinmayamission.com/"
+		}
+	],
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://wpackagist.org"
+		}
+	],
+	"require": {
+		"php": ">=7.0"
+
+	},
+	"autoload": {
+	},
+	"extra": {
+	}
+}

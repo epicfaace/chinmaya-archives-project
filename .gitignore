@@ -1,0 +1,31 @@
+### Miscellaneous
+.DS_Store
+Thumbs.db
+.ant-targets-gcmw.xml
+
+### Composer
+composer.lock
+vendor/
+dist/
+node_modules/
+npm-debug.log
+.vagrant/
+debug.log
+
+
+### IDE
+.idea/
+.ant-targets-build.xml
+
+
+### Wordpress
+
+/htdocs/cms/*
+/htdocs/config.php
+/htdocs/wp-content/debug.log
+!/htdocs/wp-content/plugins/*
+!/htdocs/wp-content/plugins/ccmt-gcmw2
+/htdocs/wp-content/uploads/*
+/htdocs/wp-content/upgrade/
+/htdocs/wp-content/themes/
+htdocs/wp-content/gcmw-library/
