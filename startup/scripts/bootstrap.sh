@@ -9,11 +9,11 @@ DOMAIN=localhost.archives.chinmayamission.com
             sudo apt-get update
             yes | sudo apt-get install php7.1
             yes | sudo apt install php7.0-mysql php7.0-curl php7.0-json php7.0-cgi  php7.0 libapache2-mod-php7.0
-            sudo apt-get install mysql-server php7.1-mysql
+            sudo apt-get install -y mysql-server php7.1-mysql
             sudo a2dismod php5
             sudo a2enmod php7.0 
-            sudo apt-get install php7.0-xml
-            sudo apt-get install php7.0-zip
+            sudo apt-get install -y php7.0-xml
+            sudo apt-get install -y php7.0-zip
 
             # echo "Creating vhost config for $DOMAIN..."
             sudo cp /etc/apache2/sites-available/scotchbox.local.conf /etc/apache2/sites-available/$DOMAIN.conf
