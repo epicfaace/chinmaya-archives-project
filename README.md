@@ -3,6 +3,7 @@ A vagrant setup for [Providence](https://github.com/collectiveaccess/providence)
 
 ## Running
 ```
+git submodule init
 git submodule update --recursive --remote
 vagrant plugin install vagrant-hostsupdater
 vagrant up
@@ -99,7 +100,7 @@ Go to http://localhost.archives.chinmayamission.com on your computer.
 Notes
 ```
 # apache2ctl -S
-# sudo vim /etc/apache2/sites-available/local.archives.chinmayamission.com.conf
+# sudo vim /etc/apache2/sites-available/localhost.archives.chinmayamission.com.conf
 
 # sudo sed -i s,'/var/www/public','/var/www/htdocs',g /etc/apache2/sites-available/000-default.conf
 # sudo a2ensite 000-default

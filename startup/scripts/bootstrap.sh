@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 ## Configure Apache
 ## Only thing you probably really care about is right here
-DOMAIN=local.archives.chinmayamission.com
+DOMAIN=localhost.archives.chinmayamission.com
 
             echo "Upgrading to php7..."
             yes | sudo add-apt-repository ppa:ondrej/php 
@@ -25,7 +25,7 @@ DOMAIN=local.archives.chinmayamission.com
 
             # echo "Enabling $DOMAIN. Will probably tell you to restart Apache..."
             sudo a2ensite $DOMAIN.conf
-            # sudo a2dissite 000-default scotchbox-local
+            sudo a2dissite 000-default scotchbox-local
 
             echo "So let's restart apache..."
             sudo service apache2 restart
